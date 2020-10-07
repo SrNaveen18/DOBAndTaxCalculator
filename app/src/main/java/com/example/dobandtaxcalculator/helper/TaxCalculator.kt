@@ -8,7 +8,7 @@ object TaxCalculator {
             amount in 300001..500000 -> getTaxBetween3To5Lakhs(amount)
             amount in 500001..1000000 -> getTaxBetween5To10Lakhs(amount)
             amount > 1000000 -> getTaxBetweenAbove10Lakhs(amount)
-            else -> (0.4 * (amount - 1000000)) + (0.3 * 500000) + (0.2 * 200000) + (0.1 * 100000)
+            else -> 0.0
         }
     }
 
