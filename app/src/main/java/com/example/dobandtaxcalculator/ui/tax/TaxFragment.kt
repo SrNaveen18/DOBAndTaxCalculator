@@ -2,8 +2,8 @@ package com.example.dobandtaxcalculator.ui.tax
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.dobandtaxcalculator.BR
@@ -27,11 +27,16 @@ class TaxFragment : BaseFragment<TaxFragmentBinding, TaxViewModel>() {
         getViewModel()?.getImageList()?.observe(viewLifecycleOwner, {
             it?.let {
                 if (it.isNotEmpty()) {
-                    Glide.with(requireActivity())
-                        .load(Uri.fromFile(File(it[it.size - 1].imagePath)))
-                        .into(imageView)
+                    loadImage(Uri.fromFile(File(it[it.size - 1].imagePath)),imageView)
+                    loadImage(Uri.fromFile(File(it[it.size - 1].imagePath)),fadedImageView)
                 }
             }
         })
+    }
+
+    private fun loadImage(fromFile: Uri, imageView: AppCompatImageView) {
+        Glide.with(requireActivity())
+            .load(fromFile)
+            .into(imageView)
     }
 }

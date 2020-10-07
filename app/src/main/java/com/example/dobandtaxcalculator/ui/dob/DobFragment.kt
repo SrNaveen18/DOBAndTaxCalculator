@@ -3,6 +3,7 @@ package com.example.dobandtaxcalculator.ui.dob
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -27,24 +28,33 @@ class DobFragment : BaseFragment<DobFragmentBinding, DobViewModel>() {
         getViewModel()?.getImageList()?.observe(viewLifecycleOwner, {
             it?.let {
                 if (it.isNotEmpty()) {
-                    Glide.with(requireActivity())
-                        .load(Uri.fromFile(File(it[it.size - 1].imagePath)))
-                        .into(imageView)
+                    loadImage(Uri.fromFile(File(it[it.size - 1].imagePath)), imageView)
+                    loadImage(Uri.fromFile(File(it[it.size - 1].imagePath)), fadedImageView)
                 }
             }
         })
 
-        getViewModel()?.dateOfBirth?.observe(viewLifecycleOwner,  {
+        getViewModel()?.dateOfBirth?.observe(viewLifecycleOwner, {
             getViewModel()?.calculateAge(it)
         })
 
-        getViewModel()?.ageItems?.observe(viewLifecycleOwner,{
+        getViewModel()?.ageItems?.observe(viewLifecycleOwner, {
             it?.let {
-                val years = if(it.years == 1) getString(R.string.lbl_year) else getString(R.string.lbl_years)
-                val months = if(it.months == 1) getString(R.string.lbl_month) else getString(R.string.lbl_months)
-                val days = if(it.days == 1) getString(R.string.lbl_day) else getString(R.string.lbl_days)
-               getViewModel()?.age?.value =  getViewModel()?.createAgeString(it,years,months,days)
+                val years =
+                    if (it.years == 1) getString(R.string.lbl_year) else getString(R.string.lbl_years)
+                val months =
+                    if (it.months == 1) getString(R.string.lbl_month) else getString(R.string.lbl_months)
+                val days =
+                    if (it.days == 1) getString(R.string.lbl_day) else getString(R.string.lbl_days)
+                getViewModel()?.age?.value =
+                    getViewModel()?.createAgeString(it, years, months, days)
             }
         })
+    }
+
+    private fun loadImage(fromFile: Uri, imageView: AppCompatImageView) {
+        Glide.with(requireActivity())
+            .load(fromFile)
+            .into(imageView)
     }
 }

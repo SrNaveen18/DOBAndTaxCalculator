@@ -14,20 +14,16 @@ object AgeCalculator {
             val dateFormat = SimpleDateFormat(Constants.DATE_FORMAT, Locale.getDefault())
             val birthDate = dateFormat.parse(strDate)
 
-            //create calendar object for birth day
             val birthDay = Calendar.getInstance()
             birthDate?.let {
                 birthDay.timeInMillis = birthDate.time
-                //create calendar object for current day
                 val currentTime = System.currentTimeMillis()
                 val now = Calendar.getInstance()
                 now.timeInMillis = currentTime
-                //Get difference between years
                 years = now[Calendar.YEAR] - birthDay[Calendar.YEAR]
                 val currMonth = now[Calendar.MONTH] + 1
                 val birthMonth = birthDay[Calendar.MONTH] + 1
 
-                //Get difference between months
                 months = currMonth - birthMonth
 
                 //if month difference is in negative then reduce years by one and calculate the number of months.
