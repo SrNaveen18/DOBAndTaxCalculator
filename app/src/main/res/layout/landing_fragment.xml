@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="landingVM"
+            type="com.example.dobandtaxcalculator.ui.landingpage.LandingViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTax"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/size_10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/btn_tax"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textHeader"
+            app:layout_constraintBottom_toTopOf="@id/btnDob"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDob"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/size_10dp"
+            android:background="@android:color/white"
+            android:text="@string/btn_dob"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/textHeader"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnTax" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

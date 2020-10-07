@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="taxViewModel"
+            type="com.example.dobandtaxcalculator.ui.tax.TaxViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_bg">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_8dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageView"
+                android:layout_width="@dimen/size_120dp"
+                android:layout_height="@dimen/size_120dp"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_tax_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16dp"
+            android:background="@drawable/all_border_bg"
+            android:hint="@string/hint_enter_income"
+            android:padding="@dimen/size_16dp"
+            android:inputType="number"
+            android:maxLength="8"
+            android:text="@={taxViewModel.incomeAmount}"
+            app:layout_constraintEnd_toStartOf="@id/btn_check_tax"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_16dp"
+            android:textSize="@dimen/textHeader"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:text="@{taxViewModel.taxAmount}"
+            app:layout_constraintTop_toBottomOf="@id/edt_tax_amount" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_check_tax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16dp"
+            android:text="@string/btn_check_tax"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{()->taxViewModel.onClickCalculateTax()}"
+            app:layout_constraintStart_toEndOf="@id/edt_tax_amount"
+            app:layout_constraintTop_toBottomOf="@id/cardView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

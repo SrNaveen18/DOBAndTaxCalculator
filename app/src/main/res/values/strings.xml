@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DOBAndTaxCalculator</string>
+
+    <string name="btn_dob">Calculate DOB</string>
+    <string name="btn_tax">Calculate Tax</string>
+    <string name="hint_enter_income">Enter Income</string>
+    <string name="btn_check_tax">Check Tax</string>
+    <string name="hint_enter_dob">Enter your DOB</string>
+    <string name="lbl_month">Month</string>
+    <string name="lbl_months">Months</string>
+    <string name="lbl_year">Year</string>
+    <string name="lbl_years">Years</string>
+    <string name="lbl_day">Day</string>
+    <string name="lbl_days">Days</string>
+    <string name="error_no_internet">Please check your internet connection</string>
+
+
+</resources>
